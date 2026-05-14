@@ -5,11 +5,12 @@ def sortear_palavra() -> str:
         with open("words.txt", "r", encoding="utf-8") as arquivo:
             palavras = arquivo.read().split()
             if not palavras:
-                return "PYTHON"
+                print("Erro: O arquivo 'words.txt' está vazio. Encerrando o jogo")
+                return
             return random.choice(palavras).strip().upper()
     except FileNotFoundError:
-        print("Erro: Arquivo 'words.txt' não encontrado. Usando palavra padrão.")
-        return "PYTHON"
+        print("Erro: Arquivo 'words.txt' não encontrado. Encerrando o jogo.")
+        return
 
 def main() -> None:
     print("=" * 30)
@@ -17,6 +18,8 @@ def main() -> None:
     print("=" * 30)
 
     palavra_sorteada = sortear_palavra()
+    if not palavra_sorteada:
+        return
     tentativas = 6
     letras_tentadas = []
     acompanhar_jogo = ["_" for _ in palavra_sorteada]
