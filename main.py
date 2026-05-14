@@ -2,14 +2,14 @@ import random
 
 def sortear_palavra() -> str:
     try:
-        with open("words.txt", "r", encoding="utf-8") as arquivo:
+        with open("palavras.txt", "r", encoding="utf-8") as arquivo:
             palavras = arquivo.read().split()
             if not palavras:
-                print("Erro: O arquivo 'words.txt' está vazio. Encerrando o jogo")
+                print("Erro: O arquivo 'palavras.txt' está vazio. Encerrando o jogo")
                 return
             return random.choice(palavras).strip().upper()
     except FileNotFoundError:
-        print("Erro: Arquivo 'words.txt' não encontrado. Encerrando o jogo.")
+        print("Erro: Arquivo 'palavras.txt' não encontrado. Encerrando o jogo.")
         return
 
 def main() -> None:
